@@ -1,9 +1,11 @@
-//------------------------- LIBRARIES ---------------------------//
-#include<iostream>
-#include<fstream>
-#include<cstring>
-#include<string>
-#include<Windows.h>
+//-------------------------  LIBRARIES ---------------------------//
+#include<iostream>;
+#include<fstream>;
+#include<cstring>;
+#include<string>;
+#include<Windows.h>;
+//----------------------- GLOBAL MEMORY -------------------------//
+
 //------------------------ STD LIBRARY --------------------------//
 using namespace std;
 //------------------------ PROTOTYPES ---------------------------//
@@ -11,7 +13,7 @@ char initialdisplay(); // To select Admin or User
 bool passwordmanager(int decision); // Match Password
 int dispadminmenu(); // Menu Print
 void thankspage();
-
+bool EmployeeConfirmation(string username, string password);
 //------------------------- INT MAIN ----------------------------//
 int main() {
 	char i = initialdisplay();
@@ -22,7 +24,8 @@ int main() {
 		bool flag = passwordmanager(1);
 	}
 	if (i == 'q' || i == 'Q') {
-
+		cout << "Thanks for Using" << endl;
+		return 0;
 	}
 	return 0;
 }
@@ -83,7 +86,7 @@ bool passwordmanager(int decision) {
 			cout << "                                                               PASSWORD :: ";
 			cin >> password;
 			cout << "                                                            _________________________________________\n";
-			if ((username == "admin" && password == "admin")|| (username == "ADMIN" && password == "ADMIN")) {
+			if (EmployeeConfirmation(username,password)) {
 				cout << "\n\n\n";
 				cout << "                                           Verifying your credentials................!!! (This may take some time)\n";
 				Sleep(3000);
@@ -107,45 +110,32 @@ bool passwordmanager(int decision) {
 		}
 	}
 	if (decision == 1) {
-		{
-			cout << endl;
-			string username = ".";
-			string password = ".";
-			cout << "------------------------------------------------------------------------------------------------------------------------------------------------------\n\n";
-			cout << "                                             ------------------------PASSWORD CHECK MANAGER------------------------\n\n\n\n";
-			cout << "\n\n\n\n\n";
-			while (99) {
-				cout << "                                                            _________________________________________\n";
-				cout << "                                                               USERNAME :: ";
-				cin >> username;
-				cout << "                                                            _________________________________________\n";
-				cout << "                                                            _________________________________________\n";
-				cout << "                                                               PASSWORD :: ";
-				cin >> password;
-				cout << "                                                            _________________________________________\n";
-				if ((username == "admin" && password == "admin") || (username == "ADMIN" && password == "ADMIN")) {
-					cout << "\n\n\n";
-					cout << "                                           Verifying your credentials................!!! (This may take some time)\n";
-					Sleep(3000);
-					cout << "                                                                     @LOGGED IN SUCCESSFULLY\n\n";
-					cout << "------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-					return true;
-				}
-				else {
-					cout << "\n\n\n";
-					cout << "                                           Verifying your credenrials................!!! (This may take some time)\n";
-					Sleep(3000);
-					cout << "                                                                 SORRY..! YOUR CREDENTIALS ARE WRONG\n\n";
-					cout << "                                                                     " << 3 - warning << " Attemps left\n";
-					cout << "------------------------------------------------------------------------------------------------------------------------------------------------------\n";
-					warning++;
-				}
-				if (warning == 4) {
-					cout << "                                                                  YOU CANNOT LOGIN NOW...! RESTART PROGRAM\n";
-					break;
-				}
-			}
+
+
+	}
+	return false;
+}
+bool EmployeeConfirmation(string username, string password) {
+
+	string users[5] = {};
+	ifstream fout;
+	int i = 0;
+	string h;
+	fout.open("EmpData.txt");
+	while (!(fout.eof())) {
+		fout >> h;
+		users[i] = h;
+		i++;
+	}
+	string appender = ",";
+	username.append(appender);
+	username.append(password);
+	for (int ii = 0; ii < 5; ii++) {
+		if (username == users[ii]) {
+			return true;
 		}
 	}
 	return false;
+}
+int dispadminmenu() {
 }
