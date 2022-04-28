@@ -19,6 +19,12 @@ int main() {
 	char i = initialdisplay();
 	if (i == 'e' || i=='E') {
 		bool flag = passwordmanager(0);
+		if (flag == true) {
+			dispadminmenu();
+		}
+		if (flag == false) {
+			i = 'q';
+		}
 	}
 	if (i == 'U' || i == 'u') {
 		bool flag = passwordmanager(1);
@@ -27,6 +33,7 @@ int main() {
 		cout << "Thanks for Using" << endl;
 		return 0;
 	}
+
 	return 0;
 }
 //------------------------ FUNCTION DEFFS. --------------------------//
@@ -138,4 +145,51 @@ bool EmployeeConfirmation(string username, string password) {
 	return false;
 }
 int dispadminmenu() {
+	system("cls");
+	cout << "------------------------------------------------------------------------------------------------------------------------------------------------------\n";
+	cout << "\n-----------------------------------------------------------WELCOME TO ADMIN USE PORTAL----------------------------------------------\n";
+	cout << "\n             What's On Your Mind ....??\n";
+	cout << "                                                  .______________________________________________.\n";
+	cout << "                                                  |           ........................           |\n";
+	cout << "                                                  |            ADD CUSTOMER (PRESS 1)            |\n";
+	cout << "                                                  |           ........................           |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |      ................................        |\n";
+	cout << "                                                  |      VIEW OR CALCULATE BILL (PRESS 2)        |\n";
+	cout << "                                                  |      ................................        |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |         ...........................          |\n";
+	cout << "                                                  |         CHANGE UNIT RATES (PRESS 3)          |\n";
+	cout << "                                                  |         ...........................          |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |        .............................         |\n";
+	cout << "                                                  |         CHANGE FIX PRICES (PRESS 4)          |\n";
+	cout << "                                                  |        .............................         |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |            .......................           |\n";
+	cout << "                                                  |             CHARGE BILL (PRESS 5)            |\n";
+	cout << "                                                  |            .......................           |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |          ...........................         |\n";
+	cout << "                                                  |           PASSWORD CHANGE (PRESS 6)          |\n";
+	cout << "                                                  |          ...........................         |\n";
+	cout << "                                                  |                      OR                      |\n";
+	cout << "                                                  |                ...............               |\n";
+	cout << "                                                  |                 EXIT (PRESS 0)               |\n";
+	cout << "                                                  |                ...............               |\n";
+	cout << "                                                  |______________________________________________|\n";
+	cout << "                                                                       INPUT = ";
+	int input;
+	while (99) {
+		cin >> input;
+		cout << endl;
+		if (input == 0 || input == 1 || input == 2 || input == 3 || input == 4 || input == 5|| input == 6) {
+			break;
+		}
+		cout << "                                                          Enter Valid Input Pleasee\n";
+		cout << "                                                                    INPUT = ";
+	}
+	cout << "--------------------------------------------------------------------------------------------------------------------------------------";
+
+	return 0;
 }
